@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://192.168.1.3:3306/doublegaurd</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="hibernate.connection.pool_size">10</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hibernate.hbm2ddl.auto">none</property>
+
+		<property name="c3p0.min_size">3</property>
+		<property name="c3p0.max_size">25</property>
+		<property name="c3p0.acquire_increment">1</property>
+		<property name="c3p0.max_statements">50</property>
+		<property name="c3p0.timeout">14400</property>
+		<property name="c3p0.idle_test_period">3600</property>
+		<property name="connection.provider_class">
+			org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider
+		</property>
+
+		<!-- Mapping files -->
+		<mapping resource="config/user.hbm.xml" />
+		<mapping resource="config/applications.hbm.xml" />
+		<mapping resource="config/appuserrole.hbm.xml" />
+		<mapping resource="config/privilege.hbm.xml" />
+		<mapping resource="config/approleprivileges.hbm.xml" />
+		
+		<mapping resource="config/attack.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

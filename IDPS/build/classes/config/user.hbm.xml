@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.doublegaurd.bean.UserBean" table="user">
+       <id name="userId" type="java.lang.Integer">
+            <column name="userId" />
+            <generator class="increment" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="firstName" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <property name="birthDate" type="string">
+            <column name="birthDate" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" />
+        </property>
+         <property name="mobile" type="string">
+            <column name="mobile" />
+        </property>
+        <property name="hintQuestion" type="string">
+            <column name="hintQuestion" />
+        </property>
+        <property name="hintAnswer" type="string">
+            <column name="hintAnswer" />
+        </property>
+        
+        <property name="userName" type="string">
+            <column name="userName" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.doublegaurd.bean.ApplicationsBean" table="applications">
+       <id name="appId" type="java.lang.Integer">
+            <column name="appId" />
+            <generator class="increment" />
+        </id>
+        <property name="applicationName" type="string">
+            <column name="applicationName" length="45" />
+        </property>
+        <property name="serverIpAddress" type="string">
+            <column name="serverIpAddress" length="45" />
+        </property>
+        <property name="serverPort" type="string">
+            <column name="serverPort" />
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" />
+        </property>
+         <property name="errorPage" type="string">
+            <column name="errorPage" />
+        </property>
+         <property name="welcomePage" type="string">
+            <column name="welcomePage" />
+        </property>
+        <set name="privileges"  cascade="all" inverse="true" fetch="select" lazy="false">
+            <key on-delete="cascade">
+                <column name="applicationId" />
+            </key>
+            <one-to-many class="com.doublegaurd.bean.PrivilegesBean" />
+        </set>
+        
+        <set name="users"  cascade="all" inverse="true" fetch="select" lazy="false">
+            <key on-delete="cascade">
+                <column name="applicationId" />
+            </key>
+            <one-to-many class="com.doublegaurd.bean.UserRoleBean" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.doublegaurd.bean.AppRolePrivilegesBean" table="approleprivileges">
+       
+       <id name="approleprivilegesId" type="java.lang.Integer">
+            <column name="approleprivilegesId" />
+            <generator class="increment" />
+        </id>
+       
+       <many-to-one name="application" class="com.doublegaurd.bean.ApplicationsBean" fetch="select" lazy="false">
+            <column name="applicationId" />
+        </many-to-one>
+        
+        <many-to-one name="privileges" class="com.doublegaurd.bean.PrivilegesBean" fetch="select" lazy="false">
+            <column name="privilegesId" />
+        </many-to-one>
+        
+        <many-to-one name="userRole" class="com.doublegaurd.bean.UserRoleBean" fetch="select" lazy="false">
+            <column name="userRoleId" />
+        </many-to-one>
+        
+       <!--  <property name="applicationId" type="java.lang.Integer">
+            <column name="applicationId" />
+        </property>
+       
+        <property name="privilegesId" type="java.lang.Integer">
+            <column name="privilegesId"  />
+        </property>
+        
+         <property name="userRoleId" type="java.lang.Integer">
+            <column name="userRoleId" />
+        </property> -->
+        
+    </class>
+</hibernate-mapping>

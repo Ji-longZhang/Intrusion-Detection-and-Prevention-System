@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.doublegaurd.bean.AttackBean" table="attack">
+       
+       <id name="attackId" type="java.lang.Integer">
+            <column name="attackId" />
+            <generator class="increment" />
+        </id>
+       
+        <many-to-one name="application" class="com.doublegaurd.bean.ApplicationsBean" fetch="select" lazy="false">
+            <column name="applicationId" />
+        </many-to-one>
+       
+        <property name="attackDate" type="java.util.Date">
+            <column name="attackDate"/>
+        </property>
+        
+         <property name="attackType" type="string">
+            <column name="attackType" length="450" />
+        </property>
+    </class>
+</hibernate-mapping>

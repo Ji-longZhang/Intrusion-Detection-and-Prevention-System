@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.doublegaurd.bean.PrivilegesBean" table="privileges">
+       
+       <id name="privilegeId" type="java.lang.Integer">
+            <column name="privilegeId" />
+            <generator class="increment" />
+        </id>
+       
+        <property name="applicationId" type="java.lang.Integer">
+            <column name="applicationId" />
+        </property>
+       
+        <property name="privilegeName" type="string">
+            <column name="privilegeName" length="75" />
+        </property>
+        
+         <property name="privilegeURL" type="string">
+            <column name="privilegeURL" length="75" />
+        </property>
+        
+        <property name="mappedURL" type="string">
+            <column name="mappedURL" length="75" />
+        </property>
+        
+        <set name="userRoles"  cascade="all" inverse="true" fetch="select" lazy="false">
+            <key on-delete="cascade">
+                <column name="privilegesId" />
+            </key>
+            <one-to-many class="com.doublegaurd.bean.AppRolePrivilegesBean" />
+        </set>
+    </class>
+</hibernate-mapping>
